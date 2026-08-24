@@ -5,11 +5,13 @@ export function StartScreen({
   onSeed,
   onStart,
   onRandom,
+  onReplayBriefing,
 }: {
   seed: string
   onSeed: (s: string) => void
   onStart: () => void
   onRandom: () => void
+  onReplayBriefing: () => void
 }) {
   return (
     <div className="flex min-h-full flex-col items-stretch justify-center px-6 py-12">
@@ -18,11 +20,12 @@ export function StartScreen({
           Shipyard ledger · M0
         </div>
         <h1 className="mb-2 text-6xl font-bold tracking-tight text-steel-300">DRYDOCK</h1>
-        <p className="mb-8 max-w-md text-sm leading-relaxed text-steel-400">
+        <p className="mb-2 max-w-md text-sm leading-relaxed text-steel-400">
           One berth. Forty-eight weeks. Coastal Freighters. You are interrupted only at hard
           stops — stage complete, delivery, walk-off, a projection that slips late, a contract
           about to die while the berth is empty, or cash going red.
         </p>
+        <p className="mb-8 text-xs text-steel-500">First run walks you through week 1.</p>
         <label className="mb-1 block text-[11px] font-semibold uppercase tracking-[0.2em] text-steel-500">
           Run seed
         </label>
@@ -51,6 +54,13 @@ export function StartScreen({
           className="w-full bg-oxide px-4 py-3 text-sm font-bold uppercase tracking-[0.2em] text-steel-300 hover:brightness-110"
         >
           Start Run
+        </button>
+        <button
+          type="button"
+          onClick={onReplayBriefing}
+          className="mt-3 w-full py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-steel-500 hover:text-oxide"
+        >
+          Replay briefing
         </button>
         <div className="mt-6 border-t border-steel-700 pt-4 text-[11px] uppercase tracking-wider text-steel-500">
           Default seed {config.M0.defaultSeed} · {config.TIME.weeksPerRun} weeks · starting cash{' '}

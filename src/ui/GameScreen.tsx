@@ -144,6 +144,7 @@ function HullCard({
         </div>
         <button
           type="button"
+          data-tutorial="rush"
           onClick={() => dispatch({ type: 'TOGGLE_RUSH', hullId: hull.id })}
           className={`border px-2 py-1 text-[11px] font-bold uppercase tracking-widest ${
             hull.rush ? 'border-oxide bg-oxide text-steel-300' : 'border-steel-700 text-steel-500'
@@ -152,7 +153,7 @@ function HullCard({
           Rush {hull.rush ? 'ON' : 'OFF'}
         </button>
       </div>
-      <div className="flex h-4 w-full">
+      <div className="flex h-4 w-full" data-tutorial="stages">
         {STAGES.map((s, i) => {
           const seg = segs[i]
           const current = s === hull.stage
@@ -189,7 +190,7 @@ function HullCard({
             {left < 0 ? `(${Math.abs(left)}w overdue)` : left === 0 ? '(due now)' : `(${left}w)`}
           </div>
         </div>
-        <div>
+        <div data-tutorial="projection">
           <div className="text-[10px] uppercase tracking-wider text-steel-500">Projected</div>
           <div className="font-semibold text-steel-300">
             {proj === null ? 'unknown' : `wk ${proj}`}
@@ -275,6 +276,7 @@ export function GameScreen({
           </button>
           <button
             type="button"
+            data-tutorial="continue"
             disabled={!continueOk}
             onClick={() => dispatch({ type: 'CONTINUE' })}
             className="bg-oxide px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-steel-300 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
@@ -315,7 +317,7 @@ export function GameScreen({
           <div className="mt-4 text-[10px] font-semibold uppercase tracking-[0.25em] text-steel-500">
             Crew bench
           </div>
-          <div className="mt-1 border border-steel-700 px-2">
+          <div className="mt-1 border border-steel-700 px-2" data-tutorial="bench">
             {state.crews.filter((crew) => !crew.assignment || crew.walkoffWeeksLeft > 0).map((crew) => (
               <CrewRow
                 key={crew.id}
@@ -345,7 +347,7 @@ export function GameScreen({
           <div className="mb-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-steel-500">
             Contract board
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2" data-tutorial="board">
             {state.offers.map((o) => (
               <div key={o.id} className="border border-steel-700 p-2">
                 <div className="flex items-baseline justify-between">
